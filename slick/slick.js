@@ -2477,6 +2477,10 @@
         var _ = this,
             slideCount;
 
+        if (_.touchObject.swipeLength > 5) {
+            _.$slider.trigger('swipeEnd');
+        }
+
         _.dragging = false;
         _.interrupted = false;
 
@@ -2625,6 +2629,10 @@
         if (_.animating === true) {
             _.swipeLeft = null;
             return false;
+        }
+
+        if (swipeLength > 5) {
+            _.$slider.trigger('swipeStart');
         }
 
         _.setCSS(_.swipeLeft);
